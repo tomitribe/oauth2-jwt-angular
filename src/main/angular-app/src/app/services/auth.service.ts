@@ -1,9 +1,11 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-js-decode/dist/jwt-js-decode.min.js';
 import { BehaviorSubject, of } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 import { LoginService } from './login.service';
+import { ToasterService } from './toaster.service';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +55,11 @@ export class AuthService {
   $authStatus = new BehaviorSubject(false);
   $authData = new BehaviorSubject(this.defaults);
 
-  constructor(private $login: LoginService) {
+  constructor(
+    private $login: LoginService,
+    private $toaster: ToasterService,
+    private router: Router
+  ) {
     const data = this.get();
     this.set(data ? JSON.parse(data) : { ... this.defaults });
   }
@@ -98,14 +104,14 @@ export class AuthService {
     if (this.loggingOut) {
       return;
     }
-    const message = e && e.responseJSON && e.responseJSON.error_description;
     this.loggingOut = true;
 
-    const loggedOut = this.logout();
-    if (loggedOut) {
-      setTimeout(() => this.loggingOut = false, 300);
-      // AlertView.show('Warning', message || 'Your access has expired', 'warning');
-    }
+    setTimeout(() => {
+      this.loggingOut = false;
+      this.$toaster.warn(e.reason || 'Your access has expired', e.title);
+    }, 300);
+
+    this.router.navigate(['/logout']);
   }
 
   checkRefresh() {

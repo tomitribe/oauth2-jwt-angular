@@ -12,16 +12,24 @@ export class ToasterService {
 
   onError(error: HttpErrorResponse) {
     if (error.status === 403) {
-      this.toastr.error('This action is forbidden for current user.', 'Forbidden');
-    } else {
-      this.toastr.error(error.message || (error.status + error.statusText), 'Error ' + error.status);
+      this.error('This action is forbidden for current user.', 'Forbidden');
+    } else if (error.status !== 400) {
+      this.error((error.error && error.error.error_description) || error.message || (error.status + error.statusText), error.error || ('Error ' + error.status));
     }
     throw error;
   }
 
-  onSuccess(message: string) {
+  onSuccess(message: string, title = 'Success') {
     return () => {
-      this.toastr.success(message, 'Success');
+      this.toastr.success(message, title);
     };
+  }
+
+  error(message: string, title = 'Error') {
+    this.toastr.error(message, title);
+  }
+
+  warn(message: string, title = 'Warning') {
+    this.toastr.warning(message, title);
   }
 }

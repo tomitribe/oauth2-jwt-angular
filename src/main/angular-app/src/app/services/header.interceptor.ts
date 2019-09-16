@@ -55,10 +55,10 @@ export class RetryHeaderInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         let data = {};
         data = {
-          reason: error && error.error && error.error.reason ? error.error.reason : '',
+          title: error && error.error && error.error.error ? error.error.error : error.statusText,
+          reason: error && error.error && error.error.error_description ? error.error.error_description : (error.message || ''),
           status: error.status
         };
-        console.log('error', data);
         if (error.status === 401) {
           return this.$auth.refresh()
             .pipe(
@@ -74,6 +74,9 @@ export class RetryHeaderInterceptor implements HttpInterceptor {
               })
             );
         } else {
+          if (error.status === 400 && req.$$noAuth) {
+            this.$auth.logoutAndWarn(data);
+          }
           return throwError(data);
         }
       })

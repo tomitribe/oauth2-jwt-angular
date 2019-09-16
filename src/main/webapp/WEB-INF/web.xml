@@ -33,7 +33,7 @@
    at the client side in case the user starts the application from a permalink. -->
   <servlet>
     <servlet-name>application</servlet-name>
-    <jsp-file>index.jsp</jsp-file>
+    <jsp-file>/app/index.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>application</servlet-name>

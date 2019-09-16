@@ -71,7 +71,7 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build -- --prod=true --output-path=${project.basedir}/src/main/webapp</arguments>
+              <arguments>run build -- --prod=true --deploy-url=app/ --output-path=${project.basedir}/src/main/webapp/app</arguments>
             </configuration>
           </execution>
         </executions>
@@ -79,6 +79,24 @@
           <nodeVersion>v10.16.0</nodeVersion>
           <workingDirectory>src/main/angular-app</workingDirectory>
           <installDirectory>target</installDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>src/main</directory>
+              <includes>
+                <include>angular-app/dist/*</include>
+                <include>webapp/app/*</include>
+                <include>webapp/assets/*</include>
+                <include>webapp/*.*</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
         </configuration>
       </plugin>
       <plugin>
