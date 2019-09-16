@@ -45,13 +45,13 @@ body {
 
   .navbar-brand.logo {
     padding-left: 41px;
-    background: url(assets/img/movie-icon.png) 5px center no-repeat;
+    background: url("~src/assets/img/movie-icon.png") 5px center no-repeat;
     background-size: 30px;
   }
   .logout-icon {
     width: 20px;
     height: 20px;
-    background: url(assets/img/logout-icon.png) center center no-repeat;
+    background: url("~src/assets/img/logout-icon.png") center center no-repeat;
     background-size: cover;
   }
 

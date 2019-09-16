@@ -53,9 +53,9 @@ export class MainComponent implements OnInit, OnDestroy {
     private router: Router
   ) { }
 
-  openEditModal($event: MouseEvent, id: number) {
+  openEditModal($event: MouseEvent, id?: number) {
     $event.preventDefault();
-    if (id) {
+    if (!!id) {
       this.$movies.getMovie('' + id).subscribe((movie: Movie) => {
         this.editItem = movie;
         this.modal.open();

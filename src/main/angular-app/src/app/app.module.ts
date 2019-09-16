@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -56,6 +55,16 @@ import { HearderInterceptors } from './services/header.interceptor';
 })
 export class AppModule { }
 
+export class CustomHttpLoader implements TranslateLoader {
+  constructor(
+    private http: HttpClient,
+    public resources: { prefix: string, suffix: string } = { prefix: '/assets/i18n/', suffix: '.json' }
+  ) { }
+  public getTranslation(lang: string): any {
+    return this.http.get(`${this.resources.prefix}${lang}${this.resources.suffix}`);
+  }
+}
+
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new CustomHttpLoader(http, { prefix: './assets/i18n/', suffix: '.json' });
 }

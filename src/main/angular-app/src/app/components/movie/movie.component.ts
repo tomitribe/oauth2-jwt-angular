@@ -18,7 +18,7 @@ export class MovieComponent implements OnInit, OnDestroy {
 
   movie: Movie = new Movie();
   editItem: Movie = new Movie();
-  comment = { id: 0, email: 'email@example.com', value: '' };
+  comment: any = { id: 0, email: 'email@example.com', value: '' };
 
   constructor(private $route: ActivatedRoute,
     private $movies: MoviesService,
