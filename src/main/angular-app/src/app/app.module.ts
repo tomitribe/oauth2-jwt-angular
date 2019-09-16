@@ -17,7 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { GravatarPipe } from './pipes/gravatar.pipe';
 import { AuthGuard } from './services/auth-guard.service';
-import { HearderInterceptors } from './services/header.interceptor';
+import { HeaderInterceptors } from './services/header.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { HearderInterceptors } from './services/header.interceptor';
   ],
   providers: [
     AuthGuard,
-    HearderInterceptors
+    HeaderInterceptors
   ],
   bootstrap: [AppComponent]
 })

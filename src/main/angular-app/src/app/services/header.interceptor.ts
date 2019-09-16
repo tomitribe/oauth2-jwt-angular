@@ -84,7 +84,7 @@ export class RetryHeaderInterceptor implements HttpInterceptor {
   }
 }
 
-export const HearderInterceptors = [
+export const HeaderInterceptors = [
   { provide: HTTP_INTERCEPTORS, useClass: NoAuthHeaderInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: OauthHeaderInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: RetryHeaderInterceptor, multi: true },

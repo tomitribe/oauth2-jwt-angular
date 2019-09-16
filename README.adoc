@@ -41,3 +41,54 @@ You can test any of the following accounts:
 - Account `john` with password `password` with just comments add role.
 
 For deeper exaplanation of Microprofile JWT using this application access: https://tribestream.io/guide/en/api-gateway/microservice-security-microprofile-jwt/current/
+
+# Angular Http Interceptors
+
+## Simple Example
+For your project to sign a request you might need only one interceptor or header inject.
+```typescript
+@Injectable()
+export class AuthHeaderInterceptor implements HttpInterceptor {
+  constructor(private $auth: AuthService) { }
+  intercept(req: RetryHttpRequest, next: HttpHandler): Observable<any> {
+    return next.handle(req.clone({
+      headers:
+        req.headers.set(this.$auth.authHeader,
+          `${this.$auth.authPrefix} ${this.$auth.authToken}`)
+    }));
+  }
+}
+```
+
+## Usage
+For this example we added three interceptors that are injected into angular 8 project into root module providers.
+
+```
+import { HeaderInterceptors } from './services/header.interceptor';
+
+...typescript
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+  ],
+  providers: [
+    ...
+    HeaderInterceptors
+  ],
+  bootstrap: [...]
+})
+export class AppModule { }
+```
+
+# Our usage
+
+First interceptor https://github.com/tomitribe/oauth2-jwt-angular/blob/master/src/main/angular-app/src/app/services/header.interceptor.ts#L13[NoAuthHeaderInterceptor] adds Authorization header to a request.
+
+Second interceptor https://github.com/tomitribe/oauth2-jwt-angular/blob/master/src/main/angular-app/src/app/services/header.interceptor.ts#L27[OauthHeaderInterceptor] adds `$$noAuth` property to a request for any request that should not be signed/authorised.
+
+Third interceptor https://github.com/tomitribe/oauth2-jwt-angular/blob/master/src/main/angular-app/src/app/services/header.interceptor.ts#L46[RetryHeaderInterceptor] checks for 401 errors and handles refresh/retry of request.
+
+Also check interceptors https://github.com/tomitribe/oauth2-jwt-angular/blob/master/src/main/angular-app/src/app/services/header.interceptor.ts[source] and https://github.com/tomitribe/oauth2-jwt-angular/blob/master/src/main/angular-app/src/app/app.module.ts#L52[usage];
