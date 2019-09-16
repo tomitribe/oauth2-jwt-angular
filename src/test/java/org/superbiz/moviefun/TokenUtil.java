@@ -17,7 +17,7 @@
  * limitations under the License.
  *
  */
-package org.superbiz.moviefun.utils;
+package org.superbiz.moviefun;
 
 import com.nimbusds.jose.JOSEObjectType;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -52,7 +52,7 @@ import java.util.Set;
  */
 public class TokenUtil {
 
-    public static final String PRIVATE_KEY_PEM = "/privateKey-pkcs8.pem";
+    public static final String PRIVATE_KEY_PEM = "/src/main/tag/import/privateKey-pkcs8.pem";
 
     private TokenUtil() {
     }

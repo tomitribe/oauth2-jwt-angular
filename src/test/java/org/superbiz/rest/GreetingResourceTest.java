@@ -46,7 +46,7 @@ public class GreetingResourceTest {
                 .path("/test/greeting/")
                 .accept(MediaType.APPLICATION_JSON_TYPE)
                 .get(String.class);
-        assertEquals("Hi Microprofile JWT!", message);
+        assertEquals("Hi MicroProfile JWT!", message);
     }
 
     @Test

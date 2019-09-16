@@ -16,10 +16,11 @@
  */
 package org.superbiz.moviefun;
 
-import com.nimbusds.jwt.JWTClaimsSet;
-import org.apache.commons.lang.StringUtils;
-import org.superbiz.moviefun.rest.MoviesMPJWTConfigurationProvider;
-import org.superbiz.moviefun.utils.TokenUtil;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -28,11 +29,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import com.nimbusds.jwt.JWTClaimsSet;
+import org.apache.commons.lang.StringUtils;
 
 @Path("token")
 @Produces(MediaType.APPLICATION_JSON)
@@ -105,7 +103,7 @@ public class STSResource {
                     .claim("email", username + "@superbiz.org")
                     .subject(username)
                     .audience("mp-jwt-moviefun")
-                    .issuer(MoviesMPJWTConfigurationProvider.ISSUED_BY)
+                    .issuer("/oauth2/token")
                     .build();
 
             final String accessToken;

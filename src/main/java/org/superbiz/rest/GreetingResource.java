@@ -31,7 +31,7 @@ public class GreetingResource {
 
     @GET
     public String message() {
-        return "Hi Microprofile JWT!";
+        return "Hi MicroProfile JWT!";
     }
 
     @POST
