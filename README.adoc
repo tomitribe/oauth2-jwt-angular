@@ -63,7 +63,7 @@ export class AuthHeaderInterceptor implements HttpInterceptor {
 ## Usage
 For this example we added three interceptors that are injected into angular 8 project into root module providers.
 
-```
+```typescript
 import { HeaderInterceptors } from './services/header.interceptor';
 
 ...typescript
@@ -103,7 +103,7 @@ export class NoAuthHeaderInterceptor implements HttpInterceptor {
 }
 ```
 Second interceptor https://github.com/tomitribe/oauth2-jwt-angular/blob/master/src/main/angular-app/src/app/services/header.interceptor.ts#L27[OauthHeaderInterceptor] adds Authorization header to a request.
-```
+```typescript
 @Injectable()
 export class OauthHeaderInterceptor implements HttpInterceptor {
   constructor(private $auth: AuthService) { }
@@ -126,7 +126,7 @@ export class OauthHeaderInterceptor implements HttpInterceptor {
 
 Third interceptor https://github.com/tomitribe/oauth2-jwt-angular/blob/master/src/main/angular-app/src/app/services/header.interceptor.ts#L46[RetryHeaderInterceptor] checks for 401 errors and handles refresh/retry of request.
 
-```
+```typescript
 @Injectable()
 export class RetryHeaderInterceptor implements HttpInterceptor {
   constructor(private $auth: AuthService) { }
