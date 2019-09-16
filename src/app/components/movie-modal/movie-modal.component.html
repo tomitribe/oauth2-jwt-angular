@@ -1,0 +1,73 @@
+<div class="modal fade ux-movie-window" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-header-detached">
+      <form class="form-horizontal ux-movie-form" role="form" id="uxMovieForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="modal-header d-flex justify-content-center">
+          <h3 class="modal-title font-weight-light" id="movieModalLabel">{{"movie" | translate}}</h3>
+          <button type="button" class="ux-close close close-x font-weight-light" data-dismiss="modal"
+            aria-hidden="true">&times;
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <input type="text" [(ngModel)]="item.id" name="id" hidden>
+
+          <div class="form-group"
+            [ngClass]="{'has-error': f.form.controls.title && f.form.controls.title.errors, 'has-success': f.form.controls.title && !f.form.controls.title.errors && f.form.controls.title.touched }">
+            <label for="title" class="col-12 mb-0 text-muted control-label">{{"title" | translate}}</label>
+
+            <div class="col-12">
+              <input class="form-control ux-title" id="title" [attr.placeholder]="'title' | translate" type="text"
+                [(ngModel)]="item.title" name="title" required>
+            </div>
+          </div>
+
+          <div class="form-group"
+            [ngClass]="{'has-error': f.form.controls.director && f.form.controls.director.errors, 'has-success': f.form.controls.director && !f.form.controls.director.errors && f.form.controls.director.touched }">
+            <label for="director" class="col-12 mb-0 text-muted control-label">{{"director" |
+                               translate}}</label>
+
+            <div class="col-12">
+              <input class="form-control ux-director" id="director" type="text"
+                [attr.placeholder]="'director' | translate" [(ngModel)]="item.director" name="director" required>
+            </div>
+          </div>
+          <div class="form-group"
+            [ngClass]="{ 'has-error': f.form.controls.genre && f.form.controls.genre.errors, 'has-success': f.form.controls.genre && !f.form.controls.genre.errors && f.form.controls.genre.touched }">
+            <label for="genre" class="col-12 mb-0 text-muted control-label">{{"genre" | translate}}</label>
+
+            <div class="col-12">
+              <input class="form-control ux-genre" id="genre" [attr.placeholder]="'genre' | translate" type="text"
+                [(ngModel)]="item.genre" name="genre" required>
+            </div>
+          </div>
+          <div class="form-group"
+            [ngClass]="{ 'has-error': f.form.controls.rating && f.form.controls.rating.errors, 'has-success': f.form.controls.rating && !f.form.controls.rating.errors && f.form.controls.rating.touched }">
+            <label for="rating" class="col-12 mb-0 text-muted control-label">{{"rating" | translate}}</label>
+
+            <div class="col-12">
+              <input class="form-control ux-rating" id="rating" type="number" min="0" max="10"
+                [attr.placeholder]="'rating' | translate" [(ngModel)]="item.rating" name="rating" required>
+            </div>
+          </div>
+          <div class="form-group"
+            [ngClass]="{ 'has-error': f.form.controls.year && f.form.controls.year.errors, 'has-success': f.form.controls.year && !f.form.controls.year.errors && f.form.controls.year.touched }">
+            <label for="year" class="col-12 mb-0 text-muted control-label">{{"year" | translate}}</label>
+
+            <div class="col-12">
+              <input class="form-control ux-year" id="year" [attr.placeholder]="'year' | translate" type="number"
+                min="1900" [attr.max]="currentYear" [(ngModel)]="item.year" name="year" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default ux-close" data-dismiss="modal">
+            {{"close" | translate}}
+          </button>
+          <button type="submit" class="btn btn-primary ux-save">{{"save" | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

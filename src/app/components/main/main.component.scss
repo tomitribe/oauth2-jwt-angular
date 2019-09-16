@@ -1,0 +1,46 @@
+@import "../../../_variables.scss";
+
+:host {
+  display: block;
+  margin-top: $content-margin-top;
+
+  .pagination {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  th:last-child {
+    width: 5px;
+  }
+
+  a.ux-delete-row:hover,
+  a.ux-edit-row:hover {
+    cursor: hand;
+  }
+
+  .panel-body > .input-group {
+    margin-bottom: 15px;
+  }
+
+  .search-movies-bar {
+    height: 50px;
+    $search-bar-color: #524e80;
+    border: 1px solid $search-bar-color;
+
+    span.input-group-text,
+    input,
+    #dropdownMenuButton {
+      color: #ffffff;
+      background-color: $search-bar-color;
+      height: 50px;
+    }
+
+    span.input-group-text span.fa {
+      padding-left: 10px;
+    }
+
+    input::placeholder {
+      color: #ffffff;
+    }
+  }
+}

@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have sign in message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to moviefun-angular!');
+    expect(page.getSignInText()).toContain('Sign In');
   });
 
   afterEach(async () => {

@@ -1,11 +1,17 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
-  navigateTo() {
-    return browser.get(browser.baseUrl) as Promise<any>;
+  navigateTo(page = '') {
+    const newUrl = browser.baseUrl + page;
+    console.log(`Navigated to new Url ${newUrl}`);
+    return browser.get(newUrl) as Promise<any>;
   }
 
-  getTitleText() {
-    return element(by.css('app-root h1')).getText() as Promise<string>;
+  querySelector(selector: string) {
+    return element(by.css(selector));
+  }
+
+  getSignInText() {
+    return this.querySelector('app-root .form-login h1').getText() as Promise<string>;
   }
 }
