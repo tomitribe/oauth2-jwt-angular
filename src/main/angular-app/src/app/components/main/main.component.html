@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="mx-auto text-center mb-3 mt-3">
+      <h3 class="pt-4 pb-2">{{"movies" | translate}}</h3>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="mx-auto">
+      <div class="card">
+        <div class="card-body px-0 py-0">
+          <div class="input-group mb-0 input-group-sm search-movies-bar rounded-top ">
+            <div class="input-group-prepend">
+              <span class="input-group-text border-0 rounded-0">
+                <span class="fa fa-search"></span>
+              </span>
+            </div>
+            <input type="text" class="form-control border-0 form-control-sm ux-filter-field"
+              placeholder="Search for anything" [(ngModel)]="search.searchTerm" autofocus
+              (keydown.enter)="searchTerm()">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary dropdown-toggle border-0 rounded-0 pr-3" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown">
+                <span class="ux-selected-filter">{{search.field | translate}}</span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item ux-filter" *ngFor="let item of filters"
+                  (click)="selectFilter(item)">{{item | translate}}</a>
+              </div>
+            </div>
+          </div>
+          <table class="table">
+            <thead class="thead-gray">
+              <tr>
+                <th scope="col" class="font-weight-normal pl-4 pt-1 pb-1">{{"title" | translate}}</th>
+                <th scope="col" class="font-weight-normal pt-1 pb-1">{{"director" | translate}}</th>
+                <th scope="col" class="font-weight-normal pt-1 pb-1">{{"genre" | translate}}</th>
+                <th scope="col" class="font-weight-normal pt-1 pb-1">{{"rating" | translate}}</th>
+                <th scope="col" class="font-weight-normal pt-1 pb-1">{{"year" | translate}}</th>
+                <th scope="col" class="font-weight-normal pr-4"></th>
+              </tr>
+            </thead>
+            <tbody class="tbody-gray">
+              <tr *ngFor="let movie of movies">
+                <td class="align-middle pl-4 pt-4 pb-4"><a [routerLink]="['/movie', movie.id]"
+                    class="ux-goto-movie font-weight-bold">{{movie.title}}</a></td>
+                <td class="align-middle pt-4 pb-4">{{movie.director}}</td>
+                <td class="align-middle pt-4 pb-4">{{movie.genre}}</td>
+                <td class="align-middle pt-4 pb-4"><i class="fa fa-star text-warning"></i> {{movie.rating}}/10</td>
+                <td class="align-middle pt-4 pb-4">{{movie.year}}</td>
+                <td class="align-middle pr-4 pt-4 pb-4">
+                  <div class="btn-group">
+                    <span class="fa fa-ellipsis-h ux-hover-dots" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false"></span>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <button href="#" (click)="openEditModal($event, movie.id)" class="ux-edit-row dropdown-item"
+                        type="button"><span class="col-2 fa fa-edit p-0 text-info"></span><span
+                          class="col-10">Edit</span></button>
+                      <button href="#" (click)="deleteMovie($event, movie.id)" class="ux-delete-row dropdown-item"
+                        type="button"><span class="col-2 fa fa-trash-alt p-0 text-danger"></span><span
+                          class="col-10">Delete</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="ux-additional mx-auto row mb-3 mt-3">
+      <a class="load-data col-9" (click)="loadSample($event)" href="#"
+        *ngIf="(!movies || !movies.length) && !search.searchTerm">{{"load.dada" | translate}}</a>
+      <a class="load-data col-9" (click)="clearFilter($event)" href="#"
+        *ngIf="(!movies || !movies.length) && search.searchTerm">{{"load.clear" | translate}}</a>
+      <ul class="pagination col-9" *ngIf="movies && movies.length">
+        <li *ngFor="let page of pages" class="page-item" [ngClass]="{'active': page.active}">
+          <a class="page-link" [routerLink]="page.link" [attr.page]="page.number">
+            {{page.text}}
+          </a>
+        </li>
+      </ul>
+      <button type="button" class="col-3 btn btn-primary ux-add-btn float-right"
+        (click)="openEditModal($event)">{{"add.movie" | translate}}</button>
+    </div>
+  </div>
+</div>
+
+<app-movie-modal [item]='editItem'></app-movie-modal>

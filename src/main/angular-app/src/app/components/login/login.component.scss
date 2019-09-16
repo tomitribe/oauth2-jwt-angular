@@ -1,0 +1,57 @@
+:host {
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: stretch;
+  color: #ffffff;
+  justify-content: center;
+  .text-muted {
+    color: #f5f5f5 !important;
+  }
+  .form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    .checkbox {
+      font-weight: 400;
+    }
+    .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      color: #ffffff;
+      background-color: rgba(76, 69, 136, 1);
+      font-size: 16px;
+      margin: 15px 0;
+      &::placeholder {
+        color: #ffffff;
+      }
+    }
+    .form-control:focus {
+      z-index: 2;
+    }
+    img {
+      width: 220px;
+    }
+  }
+
+  .back-drop.login {
+    background-image: url("~src/assets/img/login.jpg");
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .form-control {
+    border-color: rgba(76, 69, 136, 0.9);
+    border-radius: 0.2rem;
+  }
+  .btn-lg.btn-primary {
+    font-size: 1em;
+    border-radius: 0.2rem;
+  }
+}
