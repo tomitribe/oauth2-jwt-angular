@@ -21,21 +21,21 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.superbiz</groupId>
-  <artifactId>mp-jwt-moviefun</artifactId>
+  <artifactId>mp-jwt-with-angular-moviefun</artifactId>
   <version>1.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>REST Microprofile-JWT</name>
+  <name>Implementing MicroProfile JWT with Angular JS and TomEE</name>
 
   <scm>
-    <connection>scm:git:git@github.com:tomitribe/microservice-with-jwt-and-microprofile.git</connection>
-    <developerConnection>scm:git:git@github.com:tomitribe/microservice-with-jwt-and-microprofile.git</developerConnection>
-    <url>scm:git:git@github.com:tomitribe/microservice-with-jwt-and-microprofile.git</url>
+    <connection>scm:git:git@github.com:tomitribe/oauth2-jwt-angular.git</connection>
+    <developerConnection>scm:git:git@github.com:tomitribe/oauth2-jwt-angular.git</developerConnection>
+    <url>scm:git:git@github.com:tomitribe/oauth2-jwt-angular.git</url>
     <tag>HEAD</tag>
   </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tomee.version>8.0.0-M3</tomee.version>
+    <tomee.version>8.0.0</tomee.version>
     <version.shrinkwrap.resolver>2.0.0</version.shrinkwrap.resolver>
     <mp-jwt.version>1.0</mp-jwt.version>
     <mp-config.version>1.2</mp-config.version>
@@ -474,8 +474,31 @@
       <name>Tribestream Repository</name>
       <url>https://repository.tribestream.io/signup/maven/</url>
     </repository>
+    <!-- adding some staging repos until the vote fully passes and artifacts get promoted -->
+    <repository>
+      <id>8.0.0-staging</id>
+      <name>Staged TomEE 8 final release candidate</name>
+      <url>https://repository.apache.org/content/repositories/orgapachetomee-1147/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
   </repositories>
   <pluginRepositories>
+    <pluginRepository>
+      <id>8.0.0-plugin-staging</id>
+      <name>Staged TomEE 8 final release candidate</name>
+      <url>https://repository.apache.org/content/repositories/orgapachetomee-1147/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
     <pluginRepository>
       <id>tribestream.io</id>
       <name>Tribestream Repository</name>

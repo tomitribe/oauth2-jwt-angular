@@ -40,7 +40,7 @@ public class MoviesMPJWTConfigurationProvider {
         final KeyFactory kf = KeyFactory.getInstance("RSA");
         final RSAPublicKey pk = (RSAPublicKey) kf.generatePublic(spec);
 
-        JWTAuthConfiguration contextInfo = JWTAuthConfiguration.authContextInfo(pk, ISSUED_BY);
+        JWTAuthConfiguration contextInfo = JWTAuthConfiguration.authConfiguration(pk, ISSUED_BY);
 
         return Optional.of(contextInfo);
     }
