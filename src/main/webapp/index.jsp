@@ -20,20 +20,18 @@ limitations under the License.
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Moviefun</title>
-  <link href="/movies/webjars/font-awesome/5.0.10/web-fonts-with-css/css/fontawesome-all.min-jsf.css" rel="stylesheet">
-  <link href="/movies/webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/movies/app/app.less" rel="stylesheet/less" type="text/css">
-  <script src="/movies/webjars/requirejs/2.3.5/require.min.js"></script>
+  <title>Moviefun App</title>
+
   <script type="text/javascript">
     window.ux = window.ux || {};
     window.ux.SESSION_ID = "<%=request.getSession().getId()%>";
     window.ux.ROOT_URL = "/movies/";
     window.tokenHost = "http://localhost:8080/oauth2/token";
   </script>
+
   <base href="/movies/">
-  <script src="/movies/app/config.js"></script>
-  <script src="/movies/app/js/start.js"></script>
 </head>
-<body></body>
+<body>
+  <app-root></app-root>
+<script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="scripts.js" defer></script><script src="runtime-es2015.js" type="module"></script><script src="vendor-es2015.js" type="module"></script><script src="main-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es5.js" nomodule defer></script></body>
 </html>

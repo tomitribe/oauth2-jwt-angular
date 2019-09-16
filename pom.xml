@@ -71,7 +71,7 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build -- --prod=false --output-path=${project.basedir}/target/webapp/app</arguments>
+              <arguments>run build -- --output-path=${project.basedir}/src/main/webapp</arguments>
             </configuration>
           </execution>
         </executions>
