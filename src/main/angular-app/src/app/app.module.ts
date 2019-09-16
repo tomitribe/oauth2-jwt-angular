@@ -66,5 +66,5 @@ export class CustomHttpLoader implements TranslateLoader {
 }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new CustomHttpLoader(http, { prefix: './assets/i18n/', suffix: '.json' });
+  return new CustomHttpLoader(http, { prefix: './app/assets/i18n/', suffix: '.json' });
 }
