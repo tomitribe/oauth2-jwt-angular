@@ -66,7 +66,8 @@ For this example we added three interceptors that are injected into angular 8 pr
 ```typescript
 import { HeaderInterceptors } from './services/header.interceptor';
 
-...typescript
+...
+
 @NgModule({
   declarations: [
     ...

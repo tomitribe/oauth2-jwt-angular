@@ -6,8 +6,10 @@
     "start": "ng serve --disableHostCheck",
     "build": "ng build",
     "test": "ng test",
+    "test:headless": "ng test --configuration=headless",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "e2e:headless": "ng e2e --configuration=headless"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +33,7 @@
     "ngx-toastr": "^10.2.0",
     "rxjs": "^6.5.3",
     "tslib": "^1.10.0",
-    "zone.js": "^0.10.2"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.3",

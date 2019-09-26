@@ -18,6 +18,7 @@ limitations under the License.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Moviefun App</title>
@@ -31,7 +32,9 @@ limitations under the License.
 
   <base href="/movies/">
 </head>
+
 <body>
   <app-root></app-root>
 </body>
+
 </html>

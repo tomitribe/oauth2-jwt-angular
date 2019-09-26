@@ -1,10 +1,11 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HeaderComponent } from './header.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 import { HttpLoaderFactory } from 'src/app/app.module';
-
+import { GravatarPipe } from 'src/app/pipes/gravatar.pipe';
+import { HeaderComponent } from './header.component';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
@@ -12,6 +13,7 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        RouterTestingModule,
         HttpClientModule,
         TranslateModule.forRoot({
           loader: {
@@ -19,9 +21,12 @@ describe('HeaderComponent', () => {
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
           }
-        })
+        }),
+        ToastrModule.forRoot()
       ],
-      declarations: [HeaderComponent]
+      declarations: [
+        HeaderComponent,
+        GravatarPipe]
     })
       .compileComponents();
   }));

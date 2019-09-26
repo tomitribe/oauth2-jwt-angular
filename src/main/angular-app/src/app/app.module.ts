@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -66,5 +67,5 @@ export class CustomHttpLoader implements TranslateLoader {
 }
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new CustomHttpLoader(http, { prefix: './app/assets/i18n/', suffix: '.json' });
+  return new CustomHttpLoader(http, environment.test ? undefined : { prefix: './app/assets/i18n/', suffix: '.json' });
 }

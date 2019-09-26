@@ -1,10 +1,13 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { async, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
+import { AppComponent } from './app.component';
 import { HttpLoaderFactory } from './app.module';
+import { HeaderComponent } from './components/header/header.component';
+import { GravatarPipe } from './pipes/gravatar.pipe';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -18,11 +21,13 @@ describe('AppComponent', () => {
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
           }
-        })
+        }),
+        ToastrModule.forRoot()
       ],
       declarations: [
         AppComponent,
         HeaderComponent,
+        GravatarPipe
       ],
     }).compileComponents();
   }));
